@@ -1,0 +1,33 @@
+{
+  "nav": {
+    "home": "Início",
+    "studio": "Estúdio",
+    "about": "Sobre"
+  },
+  "message": {
+    "themeToggle": "Alternar Tema",
+    "home": {
+      "title": "Bem-vindo ao One Music Studio!",
+      "description": "A referência em Curitiba para Gravação, produção, ensaios, mixagem e masterização, ensaios e aulas de bateria.",
+      "button": "Explorar nosso estúdio"
+    },
+    "studio": {
+      "title": "Estúdio",
+      "description": "Conheça nossas salas",
+      "rooms": {
+        "roomA": {
+          "name": "Sala A",
+          "description": "Sala equipada para gravação profissional"
+        },
+        "roomB": {
+          "name": "Sala B",
+          "description": "Perfeita para ensaios e pré-produção"
+        }
+      }
+    },
+    "about": {
+      "title": "Sobre Nós",
+      "description": "Saiba mais sobre nossa missão e equipe dedicada a ajudar músicos a alcançarem seu melhor som."
+    }
+  }
+}

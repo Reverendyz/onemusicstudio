@@ -1,0 +1,33 @@
+{
+  "nav": {
+    "home": "Home",
+    "studio": "Studio",
+    "about": "About"
+  },
+  "message": {
+    "themeToggle": "Toggle Theme",
+    "home": {
+      "title": "Welcome to One Music Studio!",
+      "description": "The reference in Curitiba for recording, production, rehearsals, mixing and mastering, rehearsals and drum lessons.",
+      "button": "Explore our studio"
+    },
+    "studio": {
+      "title": "Studio",
+      "description": "Explore our rooms",
+      "rooms": {
+        "roomA": {
+          "name": "Room A",
+          "description": "Professional recording room"
+        },
+        "roomB": {
+          "name": "Room B",
+          "description": "Perfect for rehearsals and pre-production"
+        }
+      }
+    },
+    "about": {
+      "title": "About Us",
+      "description": "Learn more about One Music Studio"
+    }
+  }
+}
