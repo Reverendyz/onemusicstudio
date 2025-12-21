@@ -1,0 +1,35 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "studio": "Estudio",
+    "about": "Acerca de",
+    "language": "Idioma"
+  },
+  "message": {
+    "themeToggle": "Cambiar tema",
+    "home": {
+      "title": "Bienvenido a One Music Studio!",
+      "description": "La referencia en Curitiba para grabación, producción, ensayos, mezcla y masterización, ensayos y clases de batería.",
+      "button": "Explora nuestro estudio"
+    },
+    "studio": {
+      "title": "Estudio",
+      "description": "Explora nuestras salas",
+      "rooms": {
+        "roomA": {
+          "name": "Sala A",
+          "description": "Sala equipada para grabación profesional"
+        },
+        "roomB": {
+          "name": "Sala B",
+          "description": "Perfecta para ensayos y pre-producción"
+        }
+      }
+    },
+    "about": {
+      "title": "Acerca de Nosotros",
+      "description": "Conoce más sobre nuestra misión y el equipo dedicado a ayudar a los músicos a alcanzar su mejor sonido.",
+      "address": "Nuestra Dirección"
+    }
+  }
+}
