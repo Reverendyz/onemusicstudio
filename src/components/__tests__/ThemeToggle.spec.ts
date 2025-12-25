@@ -1,6 +1,5 @@
-import { mount } from '@vue/test-utils'
-import { describe, expect, it, vi } from 'vitest'
-import ThemeToggle from '../ThemeToggle.vue'
+import { render, fireEvent } from '@testing-library/vue'
+import { expect, test, vi } from 'vitest'
 
 const toggleMock = vi.fn()
 
@@ -10,13 +9,23 @@ vi.mock('vuetify', () => ({
   }),
 }))
 
-describe('ThemeToggle', () => {
-  it('calls theme.toggle on click', async () => {
-    const wrapper = mount(ThemeToggle)
+import ThemeToggle from '@/components/ThemeToggle.vue'
 
-    const btn = wrapper.find('v-btn')
-    await btn.trigger('click')
-
-    expect(toggleMock).toHaveBeenCalledTimes(1)
+test('chama theme.toggle ao clicar no botão', async () => {
+  const { getByRole } = render(ThemeToggle, {
+    global: {
+      stubs: {
+        'v-btn': {
+          template: `<button><slot /></button>`,
+        },
+      },
+      mocks: {
+        $t: (key: string) => key,
+      },
+    },
   })
+
+  await fireEvent.click(getByRole('button'))
+
+  expect(toggleMock).toHaveBeenCalledTimes(1)
 })
