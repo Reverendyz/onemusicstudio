@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import RoomCard from '@/components/RoomCard.vue'
 import { ref } from 'vue'
+import { storage } from '@/firebase'
+import { ref as storageRef, getDownloadURL } from 'firebase/storage'
 
 const carouselItem = ref<
   {
@@ -9,24 +11,24 @@ const carouselItem = ref<
   }[]
 >([
   {
-    src: 'https://cdn.vuetifyjs.com/images/cards/docks.jpg',
+    src: '',
     cover: true,
   },
   {
-    src: 'https://cdn.vuetifyjs.com/images/cards/hotel.jpg',
+    src: '',
     cover: true,
   },
   {
-    src: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg',
+    src: '',
     cover: true,
   },
 ])
 
-const rooms = [
+const rooms = ref([
   {
     id: 'roomA',
-    image:
-      'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngmart.com%2Ffiles%2F23%2FGreen-Square-PNG-File.png&f=1&nofb=1&ipt=beda6dc8f85006743f75772cc431ffa23e3cddc1df65d4bf6290ac145d46ddad',
+    alt: 'Blue Room',
+    image: '', // Will be loaded from Firebase Storage
     equipments: [
       { icon: 'mdi-guitar-electric', details: 'Fender Stratocaster' },
       { icon: 'mdi-metronome', details: 'Yamaha Drum Set' },
@@ -35,15 +37,40 @@ const rooms = [
   },
   {
     id: 'roomB',
-    image:
-      'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.freepik.com%2Fpremium-photo%2Fdark-blue-background-square-backdrop-illustration-with-copy-space_7954-36213.jpg&f=1&nofb=1&ipt=174ba8c6ef3e4f3088a54cc5d231201119939655e9c51449c1adf3419a585b8e',
+    alt: 'Green Room',
+    image: '', // Will be loaded from Firebase Storage
     equipments: [
       { icon: 'mdi-piano', details: 'Yamaha Grand Piano' },
       { icon: 'mdi-microphone', details: 'AKG C414' },
       { icon: 'mdi-speaker', details: 'KRK Rokit 5' },
     ],
   },
-]
+])
+
+const loadImages = async () => {
+  try {
+    // Load carousel images
+    const blueroomRef = storageRef(storage, 'blueroom.jpeg')
+    if(carouselItem.value[0]) carouselItem.value[0].src = await getDownloadURL(blueroomRef)
+
+    const greenroomRef = storageRef(storage, 'greenroom.jpeg')
+    if(carouselItem.value[1]) carouselItem.value[1].src = await getDownloadURL(greenroomRef)
+
+    const greenroom2Ref = storageRef(storage, 'greenroom2.jpeg')
+    if(carouselItem.value[2]) carouselItem.value[2].src = await getDownloadURL(greenroom2Ref)
+
+    // Load room card images
+    const roomARef = storageRef(storage, 'blueroom.jpeg')
+    if (rooms.value[0]) rooms.value[0].image = await getDownloadURL(roomARef)
+
+    const roomBRef = storageRef(storage, 'greenroom.jpeg')
+    if (rooms.value[1]) rooms.value[1].image = await getDownloadURL(roomBRef)
+  } catch (error) {
+    console.error('Error loading images from Firebase Storage:', error)
+  }
+}
+
+loadImages()
 </script>
 <template>
   <v-container>
@@ -73,6 +100,7 @@ const rooms = [
         <v-row class="mt-6" justify="center">
           <v-col v-for="room in rooms" :key="room.id" cols="12" sm="6" md="6" class="text-center">
             <room-card
+              :alt="room.alt"
               :image="room.image"
               :name="$t(`message.studio.rooms.${room.id}.name`)"
               :description="$t(`message.studio.rooms.${room.id}.description`)"
