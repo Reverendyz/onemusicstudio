@@ -3,6 +3,7 @@ import { shallowRef } from 'vue'
 
 defineProps<{
   image?: string
+  alt?: string
   name: string
   description?: string
   equipments?: Record<string, string>[]
@@ -13,7 +14,7 @@ const show = shallowRef(false)
 
 <template>
   <v-card class="mx-auto" max-width="400">
-    <v-img :src="image" height="200" cover />
+    <v-img :src="image" height="200" cover :alt="alt"/>
     <v-card-title>
       {{ name }}
     </v-card-title>
