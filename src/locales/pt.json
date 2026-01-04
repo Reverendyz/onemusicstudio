@@ -17,11 +17,11 @@
       "description": "Conheça nossas salas",
       "rooms": {
         "roomA": {
-          "name": "Sala A",
+          "name": "Sala azul",
           "description": "Sala equipada para gravação profissional"
         },
         "roomB": {
-          "name": "Sala B",
+          "name": "Sala verde",
           "description": "Perfeita para ensaios e pré-produção"
         }
       }

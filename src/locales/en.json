@@ -17,11 +17,11 @@
       "description": "Explore our rooms",
       "rooms": {
         "roomA": {
-          "name": "Room A",
+          "name": "Blue Room",
           "description": "Professional recording room"
         },
         "roomB": {
-          "name": "Room B",
+          "name": "Green Room",
           "description": "Perfect for rehearsals and pre-production"
         }
       }
